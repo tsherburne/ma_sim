@@ -22,17 +22,13 @@ class Function(StructureItem):
         self.duration = NumSpec()
         self.timeout = NumSpec()
 
-    def execute(self):
-        if self.logger is not None:
-            self.logger.info('Execute Start: %s at: %d' %
-                             (self.fname, self.env.now))
+    def simulate(self):
+        self.log_start()
         self.begin()
         yield self.env.timeout(self.duration.getValue())
         self.exit()
         self.end()
-        if self.logger is not None:
-            self.logger.info('Execute End: %s at: %d' %
-                             (self.fname, self.env.now))
+        self.log_end()
 
     def begin(self):
         """

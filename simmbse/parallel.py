@@ -11,5 +11,13 @@ class Parallel(StructureItem):
                                        construct_id, systemModel, structureItem)
         self.structureType = "Parallel"
 
-    def execute(self):
-        pass
+    def simulate(self):
+        self.log_start()
+        parallel_items = []
+        for struct in self.structureItems:
+            parallel_items.append(self.env.process(struct.simulate()))
+
+        for item in parallel_items:
+            yield item
+
+        self.log_end()

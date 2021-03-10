@@ -24,7 +24,7 @@ class StructureItem:
         from .branch import Branch
         from .function import Function
         #from .exit import Exit, ExitCondition
-        from .loop import Loop #, LoopExit
+        from .loop import Loop  # , LoopExit
         from .parallel import Parallel
         #from .replicate import Replicate
         from .select import Select
@@ -35,8 +35,7 @@ class StructureItem:
         self.systemModel = systemModel
         self.structureItem = structureItem
         self.structureItems = list()
-        self.structureType = "" # overidden by by subclass
-
+        self.structureType = ""  # overidden by by subclass
 
         for num, struct in enumerate(self.structureItem['structure'], start=1):
             next_construct_id = self.construct_id + "." + str(num)
@@ -48,7 +47,7 @@ class StructureItem:
                                                     next_construct_id, self.systemModel, struct))
             elif struct['type'] == "Loop":
                 self.structureItems.append(Loop(self.env, self.logger,
-                                                    next_construct_id, self.systemModel, struct))
+                                                next_construct_id, self.systemModel, struct))
             elif struct['type'] == "Parallel":
                 self.structureItems.append(Parallel(self.env, self.logger,
                                                     next_construct_id, self.systemModel, struct))
@@ -58,10 +57,15 @@ class StructureItem:
 
     def __str__(self):
         stmt = ("\n" + "." * self.construct_id.count(".") +
-                            "Struct: %s: %s" % (self.construct_id, self.structureType))
+                "Struct: %s: %s" % (self.construct_id, self.structureType))
 
         for struct in self.structureItems:
             stmt += struct.__str__()
 
         return (stmt)
 
+    def log_start(self):
+        self.logger.info('Execute Start at : %08.2f : %-20s:%10s' % (self.env.now, self.construct_id, self.structureType))
+
+    def log_end(self):
+        self.logger.info('Execute End   at : %08.2f : %-20s:%10s' % (self.env.now, self.construct_id, self.structureType))

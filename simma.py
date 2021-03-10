@@ -25,10 +25,18 @@ logger.addHandler(ls)
 env = simpy.Environment()
 
 def main():
+    mainStructure = None
     for call in systemModel['data']['cpsSystemModel']['callStructure']:
         if call['function']['name'] == "Main":
             print("Parsing Main Branch....")
             mainStructure = Branch(env, logger, "0", systemModel, call['structure'])
-            print(mainStructure)
+            break
+
+
+    # print(mainStructure)
+
+    env.process(mainStructure.simulate())
+    env.run(until=200)
+
 if __name__ == "__main__":
     main()

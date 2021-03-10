@@ -1,6 +1,7 @@
 import simpy
 import logging
 from .structure_item import StructureItem
+from .num_spec import NumSpec, Choice
 
 
 class Select(StructureItem):
@@ -11,5 +12,8 @@ class Select(StructureItem):
                                      construct_id, systemModel, structureItem)
         self.structureType = "Select"
 
-    def execute(self):
-        pass
+    def simulate(self):
+        self.log_start()
+        choice = NumSpec(Choice(len(self.structureItems))).getValue()
+        yield self.env.process(self.structureItems[choice].simulate())
+        self.log_end()

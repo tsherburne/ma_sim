@@ -3,7 +3,9 @@ import numpy as np
 
 seed_stream = [774126224, 805584977, 1851887870]
 
-
+class Choice:
+    def __init__(self, count: int):
+        self.count = count
 class NormDist:
     def __init__(self, mean: float, std: float):
         self.mean = mean
@@ -16,7 +18,7 @@ class PoissonDist:
 
 
 class NumSpec:
-    def __init__(self, num: Union[int, float, NormDist, PoissonDist] = None, stream: int = 0):
+    def __init__(self, num: Union[int, float, Choice, NormDist, PoissonDist] = None, stream: int = 0):
         if num is None:
             # set default
             self.num = NormDist(10.0, 1.0)
@@ -30,6 +32,8 @@ class NumSpec:
     def getValue(self) -> Union[int, float]:
         if type(self.num) == float or type(self.num) == int:
             return self.num
+        elif type(self.num) == Choice:
+            return self.rng.choice(self.num.count, 1)[0]
         elif type(self.num) == NormDist:
             return round(self.rng.normal(self.num.mean, self.num.std, 1)[0], 3)
         elif type(self.num) == PoissonDist:

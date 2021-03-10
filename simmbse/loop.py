@@ -11,5 +11,11 @@ class Loop(StructureItem):
                                    construct_id, systemModel, structureItem)
         self.structureType = "Loop"
 
-    def execute(self):
-        pass
+    def simulate(self):
+        self.log_start()
+
+        while True:
+            # Loop always includes single Branch
+            yield(self.env.process(self.structureItems[0].simulate()))
+
+        self.log_end()
