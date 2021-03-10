@@ -5,7 +5,7 @@ import random
 import logging
 import logging.handlers
 import sys
-from ma_sim import Link, Function
+from simmbse import Link, Function
 
 # Setup Logger
 logger = logging.getLogger("SimPy")

@@ -1,5 +1,6 @@
 from types import MethodType
 
+# '<instance-name>:<method-name>': '<over-rided method name>'
 overrides = {
     'zip:bark': '_bark'}
 
