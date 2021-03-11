@@ -6,6 +6,7 @@ import logging.handlers
 import sys
 import json
 from simmbse import Branch
+from utility import build_index
 
 # Load System Model
 with open('./function.json', 'r') as inf:
@@ -24,7 +25,9 @@ logger.addHandler(ls)
 # Initialize SimPy
 env = simpy.Environment()
 
+# Main function
 def main():
+    build_index(systemModel)
     mainStructure = None
     for call in systemModel['data']['cpsSystemModel']['callStructure']:
         if call['function']['name'] == "Main":
