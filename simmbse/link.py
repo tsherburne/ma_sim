@@ -3,10 +3,12 @@ import simpy
 DEF_LINK_CAPACITY = 5
 DEF_LINK_DELAY = 5
 
+
 class Link:
     """
     A link is the physical implementation of an interface.
     """
+
     def __init__(self, env, capacity, delay):
         self.env = env
         self.delay = delay

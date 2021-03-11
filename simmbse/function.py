@@ -16,13 +16,17 @@ class Function(StructureItem):
         super(Function, self).__init__(env, logger,
                                        construct_id, systemModel, structureItem)
         self.structureType = "Function"
+        self.name = structureItem['referenceName']
 
-        self.fname = structureItem['referenceName']
         # **** Need to retrieve duration and timeout from systemModel ****
         self.duration = NumSpec()
         self.timeout = NumSpec()
 
     def simulate(self):
+        """
+        Setup the Simpy simulation for a Function
+        """
+
         self.log_start()
         self.begin()
         yield self.env.timeout(self.duration.getValue())

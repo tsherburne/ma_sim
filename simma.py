@@ -33,7 +33,7 @@ def main():
             break
 
 
-    # print(mainStructure)
+    print(mainStructure)
 
     env.process(mainStructure.simulate())
     env.run(until=200)

@@ -4,6 +4,10 @@ from .structure_item import StructureItem
 
 
 class Loop(StructureItem):
+    """
+    Loop is a call StructureItem that repeatedly executes the contained Branch
+    """
+
     def __init__(self, env: simpy.Environment, logger: logging.Logger,
                  construct_id: str, systemModel: dict, structureItem: dict):
 
@@ -12,6 +16,10 @@ class Loop(StructureItem):
         self.structureType = "Loop"
 
     def simulate(self):
+        """
+        Setup the Simpy simulation for a Loop structure
+        """
+
         self.log_start()
 
         while True:

@@ -3,9 +3,12 @@ import numpy as np
 
 seed_stream = [774126224, 805584977, 1851887870]
 
+
 class Choice:
     def __init__(self, count: int):
         self.count = count
+
+
 class NormDist:
     def __init__(self, mean: float, std: float):
         self.mean = mean
