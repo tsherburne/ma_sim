@@ -1,7 +1,6 @@
 import simpy
 import logging
 
-
 """
 Recursive GraphQL schema for JSON StructureItem - passed as Python dictionary
 
@@ -35,6 +34,7 @@ class StructureItem:
         from .parallel import Parallel
         #from .replicate import Replicate
         from .select import Select
+        import simapp
 
         self.env = env
         self.logger = logger
@@ -47,11 +47,19 @@ class StructureItem:
 
         for num, struct in enumerate(self.structureItem['structure'], start=1):
             next_construct_id = self.construct_id + "." + str(num)
+
             if struct['type'] == "Branch":
                 self.structureItems.append(Branch(self.env, self.logger,
                                                   next_construct_id, self.systemModel, struct))
             elif struct['type'] == "Function":
-                self.structureItems.append(Function(self.env, self.logger,
+                try:
+                    # Check for override function
+                    override_class = getattr(simapp, struct['referenceName'].capitalize())
+                    self.structureItems.append(override_class(self.env, self.logger,
+                                                    next_construct_id, self.systemModel, struct))
+                except AttributeError:
+                    # No function override exists
+                    self.structureItems.append(Function(self.env, self.logger,
                                                     next_construct_id, self.systemModel, struct))
             elif struct['type'] == "Loop":
                 self.structureItems.append(Loop(self.env, self.logger,
