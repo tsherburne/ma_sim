@@ -1,3 +1,7 @@
+from simmbse import Item
+import logging
+import simpy
+
 # Build System Model index
 def build_index(systemModel: dict):
 
@@ -22,9 +26,18 @@ def build_index(systemModel: dict):
             pass
         except KeyError:
             # call structure 'function' index
-            pass
             for entity_index, entity in enumerate(systemModel['data']['cpsSystemModel'][entity_type]):
                 cs_index[entity['function']['id']] = entity_index
 
     systemModel['data']['systemModelIndex'] = sm_index
     systemModel['data']['callStructureIndex'] = cs_index
+
+# Initial Function dependencies: Item, ControlAction, Feedback, Resources, Links
+def initialize_dependencies(env: simpy.Environment, logger: logging.Logger, systemModel: dict):
+
+    item_index = {}
+    for item in systemModel['data']['cpsSystemModel']['item']:
+        item_instance = Item(env, logger, systemModel, item)
+        item_index[item['identity']['id']] = item_instance
+
+    systemModel['data']['itemIndex'] = item_index

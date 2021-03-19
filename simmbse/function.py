@@ -31,6 +31,19 @@ class Function(StructureItem):
         self.duration = NumSpec()
         self.timeout = NumSpec()
 
+        # Triggers / Outputs / Resources for the Function
+        self.triggeredBy = []
+        self.outputs = []
+        function_index = systemModel['data']['systemModelIndex'][structureItem['referenceID']]
+        function = systemModel['data']['cpsSystemModel']['function'][function_index['entity_index']]
+
+        for item in function['relations']['triggeredBy']:
+            self.triggeredBy.append(systemModel['data']['itemIndex'][item['itemTarget']['id']])
+
+        for item in function['relations']['outputs']:
+            self.outputs.append(systemModel['data']['itemIndex'][item['itemTarget']['id']])
+
+
     def simulate(self):
         """
         Setup the Simpy simulation for a Function
@@ -38,10 +51,18 @@ class Function(StructureItem):
 
         self.log_start()
 
+        # Check for function decomposition
         if len(self.structureItems) == 0:
-            # No further decomposition
+
+            self.wait_trigger()
             self.begin()
+            self.aquire_resources()
+
             yield self.env.timeout(self.duration.getValue())
+
+            self.release_resources()
+            self.produce_resources()
+            self.output_items()
             self.exit()
             self.end()
         else:
@@ -50,6 +71,21 @@ class Function(StructureItem):
                 yield(self.env.process(struct.simulate()))
 
         self.log_end()
+
+    def wait_trigger(self):
+        pass
+
+    def aquire_resources(self):
+        pass
+
+    def release_resources(self):
+        pass
+
+    def produce_resources(self):
+        pass
+
+    def output_items(self):
+        pass
 
     def begin(self):
         """

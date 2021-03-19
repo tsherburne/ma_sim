@@ -32,8 +32,8 @@
             "builtIn": [
               {
                 "componentTarget": {
-                  "id": "76470960-f1fb-4888-add1-e19426b84577",
-                  "name": "c1",
+                  "id": "b29641d5-73e8-4f2b-af37-7cebfdbe4f67",
+                  "name": "System Context",
                   "number": ""
                 },
                 "wholeMultiplicity": "E_0",
@@ -91,8 +91,8 @@
             "builtIn": [
               {
                 "componentTarget": {
-                  "id": "664efbc2-ebe9-46ab-a80a-934169b88af9",
-                  "name": "c2",
+                  "id": "b29641d5-73e8-4f2b-af37-7cebfdbe4f67",
+                  "name": "System Context",
                   "number": ""
                 },
                 "wholeMultiplicity": "E_0",
@@ -215,8 +215,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "c62ec4d1-f8d7-458b-ba04-7aba9bb6e9f5",
-                  "name": "f1",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -261,8 +261,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "c48371dc-0d1f-4bec-8c41-ecde89a5adbc",
-                  "name": "f10",
+                  "id": "3e21fc67-2a52-4ba2-b46f-10e5c263f452",
+                  "name": "Main - Link",
                   "number": ""
                 }
               }
@@ -315,8 +315,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "7e6bc5d8-dc68-4e11-a71c-3dec33d14b8a",
-                  "name": "f11",
+                  "id": "3e21fc67-2a52-4ba2-b46f-10e5c263f452",
+                  "name": "Main - Link",
                   "number": ""
                 }
               }
@@ -370,8 +370,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "3f0a4e6a-9e85-433b-9c5b-df70eb2f032b",
-                  "name": "f2",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -416,8 +416,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "f89468da-bc21-4d43-9672-36b98724d36f",
-                  "name": "f3",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -477,8 +477,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "0cc85005-10c1-4fdf-aee8-809395ae36e0",
-                  "name": "f4",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -523,8 +523,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "3ec22448-daac-40fb-9cad-ee9c1629d8b4",
-                  "name": "f4.1",
+                  "id": "0cc85005-10c1-4fdf-aee8-809395ae36e0",
+                  "name": "f4",
                   "number": ""
                 }
               }
@@ -569,8 +569,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "0aa515ab-2394-4939-8ace-fd2e02acc506",
-                  "name": "f4.2",
+                  "id": "0cc85005-10c1-4fdf-aee8-809395ae36e0",
+                  "name": "f4",
                   "number": ""
                 }
               }
@@ -615,8 +615,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "09158f09-e80d-4bf4-b507-d7ceec7df9e5",
-                  "name": "f5",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -661,8 +661,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "05314a99-61ee-4fa3-ba39-4c4db1cfab14",
-                  "name": "f6",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -707,8 +707,8 @@
             "decomposes": [
               {
                 "functionTarget": {
-                  "id": "99f63942-631a-4ec9-9294-81ad464746d0",
-                  "name": "f7",
+                  "id": "af00b6bb-2108-4bae-aa58-d04262b34891",
+                  "name": "Main",
                   "number": ""
                 }
               }
@@ -887,7 +887,7 @@
             "size": "2",
             "sizeUnits": null,
             "priority": null,
-            "type": "Digital",
+            "type": "Mixed",
             "title": null,
             "description": null
           },
@@ -901,9 +901,9 @@
             "inputTo": [],
             "outputFrom": [
               {
-                "itemTarget": {
-                  "id": "eeb5bdc1-c3c3-4f4a-a7a9-14e008ceead4",
-                  "name": "i1",
+                "functionTarget": {
+                  "id": "c48371dc-0d1f-4bec-8c41-ecde89a5adbc",
+                  "name": "f10",
                   "number": ""
                 }
               }
@@ -921,9 +921,9 @@
             ],
             "triggers": [
               {
-                "itemTarget": {
-                  "id": "eeb5bdc1-c3c3-4f4a-a7a9-14e008ceead4",
-                  "name": "i1",
+                "functionTarget": {
+                  "id": "7e6bc5d8-dc68-4e11-a71c-3dec33d14b8a",
+                  "name": "f11",
                   "number": ""
                 },
                 "queueType": "FIFO"
@@ -956,17 +956,17 @@
             "causes": [],
             "connectsTo": [
               {
-                "linkTarget": {
-                  "id": "41127c7a-787e-481c-9f6a-b6e3fa8b8797",
-                  "name": "l1",
+                "componentTarget": {
+                  "id": "664efbc2-ebe9-46ab-a80a-934169b88af9",
+                  "name": "c2",
                   "number": ""
                 },
                 "portID": null
               },
               {
-                "linkTarget": {
-                  "id": "41127c7a-787e-481c-9f6a-b6e3fa8b8797",
-                  "name": "l1",
+                "componentTarget": {
+                  "id": "76470960-f1fb-4888-add1-e19426b84577",
+                  "name": "c1",
                   "number": ""
                 },
                 "portID": null
@@ -983,9 +983,9 @@
             "specifiedBy": [],
             "transfers": [
               {
-                "linkTarget": {
-                  "id": "41127c7a-787e-481c-9f6a-b6e3fa8b8797",
-                  "name": "l1",
+                "itemTarget": {
+                  "id": "eeb5bdc1-c3c3-4f4a-a7a9-14e008ceead4",
+                  "name": "i1",
                   "number": ""
                 }
               }

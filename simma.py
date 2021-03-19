@@ -7,7 +7,7 @@ import logging.handlers
 import sys
 import json
 from simmbse import Branch
-from utility import build_index
+from utility import build_index, initialize_dependencies
 
 # Parse input arguments
 parser = argparse.ArgumentParser()
@@ -37,6 +37,9 @@ env = simpy.Environment()
 def main():
     # Build System Model Index
     build_index(systemModel)
+
+    # Initialize Items, ControlActions, Feedback, Resources
+    initialize_dependencies(env, logger, systemModel)
 
     mainStructure = None
     for call in systemModel['data']['cpsSystemModel']['callStructure']:
